@@ -1,5 +1,6 @@
 <template>
   <section class="statistics">
+    <InputPanel />
     <div class="advanced">
       <shortenBar />
       <h2>Advanced Statistics</h2>
@@ -38,7 +39,13 @@
 </template>
 
 <script>
-export default {};
+import InputPanel from "./InputPanel.vue";
+export default {
+  name: "Cards",
+  components: {
+    InputPanel,
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -84,7 +91,7 @@ export default {};
     margin-top: 4rem;
     background-color: #fff;
     border-radius: 0.5rem;
-    margin-bottom: 7rem;
+    margin-bottom: 12rem;
     z-index: 5;
     h3 {
       color: hsl(255, 11%, 22%);

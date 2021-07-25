@@ -25,7 +25,7 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-top: 2rem;
-  margin-bottom: 12rem;
+  margin-bottom: 6rem;
   .illustrate-text {
     width: 80%;
     margin-left: auto;
@@ -57,12 +57,7 @@ export default {
     }
   }
   .image {
-    position: relative;
-
     img {
-      position: absolute;
-      top: 0;
-      left: 80px;
       height: auto;
       max-width: 100%;
     }
