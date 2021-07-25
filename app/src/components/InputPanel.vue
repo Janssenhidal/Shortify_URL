@@ -29,6 +29,20 @@
 <script>
 export default {
   name: "InputPanel",
+  data() {
+    return {
+      url: null,
+      error: false,
+    };
+  },
+  methods: {
+    async shorten() {
+      if (this.url === null) {
+        this.error = true;
+        this.$refs.button.style.border = "2px solid hsl(0, 87%, 67%)";
+      }
+    },
+  },
 };
 </script>
 
