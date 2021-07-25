@@ -27,12 +27,14 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "InputPanel",
   data() {
     return {
       url: null,
       error: false,
+      isLoading: false,
     };
   },
   methods: {
@@ -40,6 +42,19 @@ export default {
       if (this.url === null) {
         this.error = true;
         this.$refs.button.style.border = "2px solid hsl(0, 87%, 67%)";
+      } else {
+        console.log("Fetching API");
+        this.isLoading = true;
+        await axios
+          .get(`https://api.shrtco.de/v2/shorten?url=${this.url}`)
+          .then((response) => {
+            this.isLoading = false;
+            this.url = "";
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       }
     },
   },
