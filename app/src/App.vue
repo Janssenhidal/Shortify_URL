@@ -3,6 +3,7 @@
   <Illustration />
   <Cards />
   <Booster />
+  <Footer />
 </template>
 
 <script>
@@ -10,6 +11,7 @@ import Header from "./components/Header.vue";
 import Illustration from "./components/Illustration.vue";
 import Cards from "./components/Cards.vue";
 import Booster from "./components/Booster.vue";
+import Footer from "./components/Footer.vue";
 
 export default {
   name: "App",
@@ -18,6 +20,7 @@ export default {
     Illustration,
     Cards,
     Booster,
+    Footer,
   },
 };
 </script>
