@@ -1,14 +1,17 @@
 <template>
   <Header />
+  <Illustration />
 </template>
 
 <script>
 import Header from "./components/Header.vue";
+import Illustration from "./components/Illustration.vue";
 
 export default {
   name: "App",
   components: {
     Header,
+    Illustration,
   },
 };
 </script>
