@@ -50,7 +50,11 @@ export default {
           .then((response) => {
             this.isLoading = false;
             this.url = "";
-            console.log(response.data);
+            const allLinks = {
+              originalLink: response.data.result.original_link,
+              shortLink: response.data.result.full_short_link,
+            };
+            this.$emit("add-link", allLinks);
           })
           .catch((error) => {
             console.log(error);

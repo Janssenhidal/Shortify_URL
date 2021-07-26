@@ -1,6 +1,16 @@
 <template>
   <section class="statistics">
-    <InputPanel />
+    <InputPanel @add-link="addLink" />
+    <div class="link-panels">
+      <div class="links" v-for="link in allLinks" :key="link.id">
+        <p class="longLink">{{ link.originalLink }}</p>
+        <div class="copySide">
+          <p class="shortLink">{{ link.shortLink }}</p>
+          <button>Copy</button>
+        </div>
+      </div>
+    </div>
+
     <div class="advanced">
       <h2>Advanced Statistics</h2>
       <p>
@@ -44,6 +54,30 @@ export default {
   components: {
     InputPanel,
   },
+  data() {
+    return {
+      allLinks: {},
+    };
+  },
+  methods: {
+    addLink(data) {
+      console.log(data);
+
+      if (localStorage.getItem("allLinks") == null) {
+        localStorage.setItem("allLinks", "[]");
+      }
+      let oldLinks = JSON.parse(localStorage.getItem("allLinks"));
+      oldLinks.push(data);
+      this.allLinks = oldLinks;
+      localStorage.setItem("allLinks", JSON.stringify(oldLinks));
+    },
+  },
+  created() {
+    let links = JSON.parse(localStorage.getItem("allLinks"));
+    console.log(links);
+    this.allLinks = links;
+    console.log(this.allLinks);
+  },
 };
 </script>
 
@@ -75,15 +109,15 @@ export default {
     margin-left: auto;
     margin-right: auto;
     gap: 2.5rem;
-    &::after {
-      content: "";
-      position: absolute;
-      z-index: 1;
-      width: 80%;
-      height: 10px;
-      background: hsl(180, 66%, 49%);
-      top: 455px;
-    }
+    // &::after {
+    //   content: "";
+    //   position: absolute;
+    //   z-index: 1;
+    //   width: 80%;
+    //   height: 10px;
+    //   background: hsl(180, 66%, 49%);
+    //   top: 455px;
+    // }
   }
   .panels {
     position: relative;
@@ -119,5 +153,48 @@ export default {
   .third {
     top: 6rem;
   }
+}
+.link-panels {
+  padding-top: 5rem;
+}
+.links {
+  background-color: #fff;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 0.25rem;
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  .copySide {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  .longLink {
+    padding-left: 1rem;
+  }
+  .shortLink {
+    color: hsl(180, 66%, 49%);
+  }
+}
+button {
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  background-color: hsl(180, 66%, 49%);
+  padding: 0.3rem 1rem;
+  margin-right: 1rem;
+  border-radius: 0.25rem;
+  font-size: 0.8rem;
+  color: #fff;
 }
 </style>
