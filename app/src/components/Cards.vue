@@ -1,16 +1,13 @@
 <template>
   <section class="statistics">
     <InputPanel @add-link="addLink" />
-    <div class="link-panels">
-      <div class="links" v-for="(link, index) in allLinks" :key="link.id">
-        <p class="longLink">{{ link.originalLink }} {{ index }}</p>
-        <div class="copySide">
-          <p class="shortLink">{{ link.shortLink }}</p>
-          <Button @btn-click="toggleCopy(index)" :text="text" :color="color" />
-        </div>
-      </div>
-    </div>
-
+    <div class="space"></div>
+    <LinksBar
+      v-for="(link, index) in allLinks"
+      :longLink="allLinks[index].originalLink"
+      :shortLink="allLinks[index].shortLink"
+      :key="link.id"
+    />
     <div class="advanced">
       <h2>Advanced Statistics</h2>
       <p>
@@ -49,35 +46,19 @@
 
 <script>
 import InputPanel from "./InputPanel.vue";
-import Button from "./Button.vue";
+import LinksBar from "./LinksBar.vue";
 export default {
   name: "Cards",
   components: {
     InputPanel,
-    Button,
+    LinksBar,
   },
   data() {
     return {
       allLinks: {},
-      text: "Copy",
-      color: "",
-      copied: Boolean,
     };
   },
   methods: {
-    toggleCopy(index) {
-      this.text = "Copied!";
-      this.color = "hsl(257, 27%, 26%)";
-      setTimeout(() => {
-        this.text = "Copy";
-        this.color = "hsl(180, 66%, 49%)";
-      }, 2000);
-      this.copied = !this.copied;
-      let copy = this.text;
-      document.execCommand(copy);
-
-      console.log(index);
-    },
     addLink(data) {
       console.log(data);
 
@@ -171,36 +152,7 @@ export default {
     top: 6rem;
   }
 }
-.link-panels {
-  padding-top: 5rem;
-}
-.links {
-  background-color: #fff;
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 0.25rem;
-  display: flex;
-  justify-content: space-between;
-  height: 50px;
-  align-items: center;
-  margin-bottom: 1rem;
-
-  .copySide {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  p {
-    font-size: 0.9rem;
-  }
-
-  .longLink {
-    padding-left: 1rem;
-  }
-  .shortLink {
-    color: hsl(180, 66%, 49%);
-  }
+.space {
+  padding-bottom: 5rem;
 }
 </style>

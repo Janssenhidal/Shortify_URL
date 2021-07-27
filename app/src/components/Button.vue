@@ -24,7 +24,6 @@ button {
   border: 0;
   outline: 0;
   cursor: pointer;
-  background-color: hsl(180, 66%, 49%);
   padding: 0.3rem 1rem;
   margin-right: 1rem;
   border-radius: 0.25rem;
