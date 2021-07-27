@@ -2,11 +2,11 @@
   <section class="statistics">
     <InputPanel @add-link="addLink" />
     <div class="link-panels">
-      <div class="links" v-for="link in allLinks" :key="link.id">
-        <p class="longLink">{{ link.originalLink }}</p>
+      <div class="links" v-for="(link, index) in allLinks" :key="link.id">
+        <p class="longLink">{{ link.originalLink }} {{ index }}</p>
         <div class="copySide">
           <p class="shortLink">{{ link.shortLink }}</p>
-          <button>Copy</button>
+          <Button @btn-click="toggleCopy(index)" :text="text" :color="color" />
         </div>
       </div>
     </div>
@@ -49,17 +49,35 @@
 
 <script>
 import InputPanel from "./InputPanel.vue";
+import Button from "./Button.vue";
 export default {
   name: "Cards",
   components: {
     InputPanel,
+    Button,
   },
   data() {
     return {
       allLinks: {},
+      text: "Copy",
+      color: "",
+      copied: Boolean,
     };
   },
   methods: {
+    toggleCopy(index) {
+      this.text = "Copied!";
+      this.color = "hsl(257, 27%, 26%)";
+      setTimeout(() => {
+        this.text = "Copy";
+        this.color = "hsl(180, 66%, 49%)";
+      }, 2000);
+      this.copied = !this.copied;
+      let copy = this.text;
+      document.execCommand(copy);
+
+      console.log(index);
+    },
     addLink(data) {
       console.log(data);
 
@@ -74,7 +92,6 @@ export default {
   },
   created() {
     let links = JSON.parse(localStorage.getItem("allLinks"));
-    console.log(links);
     this.allLinks = links;
     console.log(this.allLinks);
   },
@@ -185,16 +202,5 @@ export default {
   .shortLink {
     color: hsl(180, 66%, 49%);
   }
-}
-button {
-  border: 0;
-  outline: 0;
-  cursor: pointer;
-  background-color: hsl(180, 66%, 49%);
-  padding: 0.3rem 1rem;
-  margin-right: 1rem;
-  border-radius: 0.25rem;
-  font-size: 0.8rem;
-  color: #fff;
 }
 </style>
