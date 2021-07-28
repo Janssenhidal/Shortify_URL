@@ -5,6 +5,7 @@
       <div class="copySide">
         <p class="shortLink">{{ shortLink }}</p>
         <Button @btn-click="toggleCopy" :text="text" :color="color" />
+        <input ref="dummyInput" type="hidden" :value="value" />
       </div>
     </div>
   </div>
@@ -20,6 +21,8 @@ export default {
   props: {
     shortLink: String,
     longLink: String,
+    value: String,
+    dummyInput: String,
   },
   data() {
     return {
@@ -37,6 +40,13 @@ export default {
         this.color = "hsl(180, 66%, 49%)";
       }, 2000);
       this.copied = !this.copied;
+
+      console.log(this.$refs.dummyInput);
+      this.$refs.dummyInput.type = "text";
+      this.$refs.dummyInput.select();
+      // this.$refs.dummyInput.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+      this.$refs.dummyInput.type = "hidden";
     },
   },
 };

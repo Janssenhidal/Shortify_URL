@@ -49,7 +49,7 @@ export default {
           .get(`https://api.shrtco.de/v2/shorten?url=${this.url}`)
           .then((response) => {
             this.isLoading = false;
-            this.url = "";
+            this.url = null;
             const allLinks = {
               originalLink: response.data.result.original_link,
               shortLink: response.data.result.full_short_link,

@@ -7,6 +7,8 @@
       :longLink="allLinks[index].originalLink"
       :shortLink="allLinks[index].shortLink"
       :key="link.id"
+      :value="allLinks[index].shortLink"
+      :href="dummyInput"
     />
     <div class="advanced">
       <h2>Advanced Statistics</h2>
@@ -56,6 +58,8 @@ export default {
   data() {
     return {
       allLinks: {},
+      value: "TESTING",
+      dummyInput: "dummyInput",
     };
   },
   methods: {
