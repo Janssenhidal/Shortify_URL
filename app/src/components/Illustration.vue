@@ -69,6 +69,7 @@ export default {
 }
 @media only screen and (max-width: 1100px) {
   .illustrate-text {
+    align-items: center;
     h1 {
       font-size: 3.5rem;
       line-height: 4rem;

@@ -89,7 +89,6 @@ export default {
   created() {
     let links = JSON.parse(localStorage.getItem("allLinks"));
     this.allLinks = links;
-    console.log(this.allLinks);
   },
 };
 </script>
@@ -213,6 +212,13 @@ export default {
 
   .space {
     padding-bottom: 8rem;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .statistics {
+    .panels-grid {
+      width: 90%;
+    }
   }
 }
 </style>

@@ -10,7 +10,6 @@
           placeholder="Shorten a link here..."
           @keypress.enter="shorten"
         />
-        <p v-show="error" ref="error" class="error">Please add a link</p>
       </div>
 
       <button type="submit" v-on:click="shorten">
@@ -23,6 +22,7 @@
         />
       </button>
     </div>
+    <p v-show="error" ref="error" class="error">Please add a link</p>
   </div>
 </template>
 
@@ -74,6 +74,7 @@ export default {
   width: 60%;
   margin-left: auto;
   margin-right: auto;
+  padding: 2rem;
 
   background-image: url("../assets/images/bg-shorten-desktop.svg");
   background-repeat: no-repeat;
@@ -85,7 +86,6 @@ export default {
 }
 .input-text {
   width: 75%;
-  margin-left: 2rem;
 }
 input {
   height: 50px;
@@ -100,11 +100,9 @@ input {
 }
 button {
   background-color: hsl(180, 66%, 49%);
-  padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
-  margin-right: 2rem;
   width: 9rem;
-  height: 3rem;
+  height: 2.8rem;
   border: none;
   color: #fff;
   font-weight: 700;
@@ -122,16 +120,13 @@ button {
   text-align: center;
   display: flex;
   gap: 0.5rem;
-  padding: 2rem 0rem;
-  justify-content: center;
-  align-items: center;
 }
 
 .error {
-  text-align: left;
+  position: absolute;
+  top: 100px;
   color: hsl(0, 87%, 67%);
   font-style: italic;
-  padding-top: 0.5rem;
   font-size: 0.8rem;
 }
 .placeholder {
@@ -147,6 +142,10 @@ button {
   }
 }
 @media only screen and (max-width: 1000px) {
+  .error {
+    top: 90px;
+    left: 45px;
+  }
   .shorten-panel {
     width: 80%;
   }
@@ -154,18 +153,12 @@ button {
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding: 0rem;
-    padding-top: 1.5rem;
   }
   button {
-    margin-right: 0rem;
-    width: 85%;
-    margin-bottom: 1.5rem;
-    margin-top: 1rem;
+    width: 25%;
   }
   .input-text {
-    width: 85%;
-    margin-left: 0rem;
+    width: 100%;
   }
 }
 
