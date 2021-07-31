@@ -8,7 +8,8 @@
       :shortLink="allLinks[index].shortLink"
       :key="link.id"
       :value="allLinks[index].shortLink"
-      :href="dummyInput"
+      :href="'dummyInput'"
+      @delete-link="deleteLink(index)"
     />
     <div class="advanced">
       <h2>Advanced Statistics</h2>
@@ -58,10 +59,16 @@ export default {
   data() {
     return {
       allLinks: {},
-      dummyInput: "dummyInput",
     };
   },
   methods: {
+    deleteLink(index) {
+      this.allLinks.splice(index, 1);
+      console.log(this.allLinks);
+      let oldLinks = JSON.parse(localStorage.getItem("allLinks"));
+      oldLinks = this.allLinks;
+      localStorage.setItem("allLinks", JSON.stringify(oldLinks));
+    },
     shortFull_URL(allLinks, index) {
       let linktest = allLinks[index].originalLink;
       if (linktest.length > 30) return linktest.substring(0, 30) + "...";

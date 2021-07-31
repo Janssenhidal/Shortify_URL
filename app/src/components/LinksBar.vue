@@ -1,6 +1,6 @@
 <template>
   <div @mouseenter="isHover = true" @mouseleave="isHover = false" class="links">
-    <span v-if="isHover" @click="test">x</span>
+    <span v-if="isHover" @click="deleteLink">x</span>
     <p class="longLink">{{ longLink }}</p>
     <div class="line"></div>
     <hr />
@@ -34,8 +34,8 @@ export default {
     };
   },
   methods: {
-    test() {
-      console.log("delete");
+    deleteLink() {
+      this.$emit("delete-link");
     },
     toggleCopy() {
       this.text = "Copied!";
