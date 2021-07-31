@@ -83,52 +83,77 @@ export default {
 <style lang="scss" scoped>
 footer {
   background-color: hsl(260, 8%, 14%);
+}
 
-  .footer-grid {
-    padding-top: 3rem;
-    display: grid;
-    grid-template-columns: 25% 50% 25%;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-bottom: 3rem;
+.footer-grid {
+  padding-top: 3rem;
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 3rem;
+}
+.logo {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.links {
+  display: flex;
+  justify-content: space-between;
+  ul {
+    list-style: none;
   }
-  .logo {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+  h4 {
+    color: #fff;
+    padding-bottom: 1rem;
+  }
+  a {
+    text-decoration: none;
+    color: hsl(0, 0%, 75%);
+    font-size: 0.9rem;
+    line-height: 2rem;
+    &:hover {
+      color: hsl(180, 66%, 49%);
+    }
+  }
+}
+.socials {
+  text-align: right;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  .social {
+    cursor: pointer;
+    fill: #fff;
+    &:hover {
+      fill: hsl(180, 66%, 49%);
+    }
+  }
+}
+
+@media only screen and (max-width: 925px) {
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
   }
   .links {
-    display: flex;
-    justify-content: space-between;
-    ul {
-      list-style: none;
-    }
+    display: grid;
+    grid-template-columns: 1fr;
+
     h4 {
-      color: #fff;
-      padding-bottom: 1rem;
-    }
-    a {
-      text-decoration: none;
-      color: hsl(0, 0%, 75%);
-      font-size: 0.9rem;
-      line-height: 2rem;
-      &:hover {
-        color: hsl(180, 66%, 49%);
-      }
+      margin-top: 2rem;
     }
   }
   .socials {
-    text-align: right;
+    margin-top: 2rem;
     .social {
-      display: inline;
-      padding-right: 1.5rem;
-      cursor: pointer;
-      fill: #fff;
-      &:hover {
-        fill: hsl(180, 66%, 49%);
-      }
+      text-align: center;
     }
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 </style>

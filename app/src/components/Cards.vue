@@ -4,7 +4,7 @@
     <div class="space"></div>
     <LinksBar
       v-for="(link, index) in allLinks"
-      :longLink="allLinks[index].originalLink"
+      :longLink="shortFull_URL(allLinks, index)"
       :shortLink="allLinks[index].shortLink"
       :key="link.id"
       :value="allLinks[index].shortLink"
@@ -58,11 +58,15 @@ export default {
   data() {
     return {
       allLinks: {},
-      value: "TESTING",
       dummyInput: "dummyInput",
     };
   },
   methods: {
+    shortFull_URL(allLinks, index) {
+      let linktest = allLinks[index].originalLink;
+      if (linktest.length > 30) return linktest.substring(0, 30) + "...";
+      return linktest;
+    },
     addLink(data) {
       console.log(data);
 
@@ -105,21 +109,22 @@ export default {
   }
 
   .panels-grid {
+    position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     width: 80%;
     margin-left: auto;
     margin-right: auto;
     gap: 2.5rem;
-    // &::after {
-    //   content: "";
-    //   position: absolute;
-    //   z-index: 1;
-    //   width: 80%;
-    //   height: 10px;
-    //   background: hsl(180, 66%, 49%);
-    //   top: 455px;
-    // }
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      width: 80%;
+      height: 10px;
+      background: hsl(180, 66%, 49%);
+      top: 230px;
+    }
   }
   .panels {
     position: relative;
@@ -158,5 +163,49 @@ export default {
 }
 .space {
   padding-bottom: 5rem;
+}
+
+@media only screen and (max-width: 1000px) {
+  .advanced {
+    padding: 1rem;
+  }
+  .statistics {
+    .panels-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+
+      &::after {
+        top: 80px;
+        width: 10px;
+        height: 80%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+    .panels {
+      margin-top: 2rem;
+      margin-bottom: 0;
+      text-align: center;
+
+      img {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+    .first {
+      margin-top: 4rem;
+    }
+    .second {
+      top: 0rem;
+    }
+    .third {
+      top: 0rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  .space {
+    padding-bottom: 8rem;
+  }
 }
 </style>

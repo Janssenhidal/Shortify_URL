@@ -1,12 +1,13 @@
 <template>
-  <div class="link-panels">
-    <div class="links">
-      <p class="longLink">{{ longLink }}</p>
-      <div class="copySide">
-        <p class="shortLink">{{ shortLink }}</p>
-        <Button @btn-click="toggleCopy" :text="text" :color="color" />
-        <input ref="dummyInput" type="hidden" :value="value" />
-      </div>
+  <div @mouseenter="isHover = true" @mouseleave="isHover = false" class="links">
+    <span v-if="isHover" @click="test">x</span>
+    <p class="longLink">{{ longLink }}</p>
+    <div class="line"></div>
+    <hr />
+    <div class="copySide">
+      <p class="shortLink">{{ shortLink }}</p>
+      <Button @btn-click="toggleCopy" :text="text" :color="color" />
+      <input ref="dummyInput" type="hidden" :value="value" />
     </div>
   </div>
 </template>
@@ -29,9 +30,13 @@ export default {
       text: "Copy",
       color: "hsl(180, 66%, 49%)",
       copied: Boolean,
+      isHover: false,
     };
   },
   methods: {
+    test() {
+      console.log("delete");
+    },
     toggleCopy() {
       this.text = "Copied!";
       this.color = "hsl(257, 27%, 26%)";
@@ -41,7 +46,6 @@ export default {
       }, 2000);
       this.copied = !this.copied;
 
-      console.log(this.$refs.dummyInput);
       this.$refs.dummyInput.type = "text";
       this.$refs.dummyInput.select();
       // this.$refs.dummyInput.setSelectionRange(0, 99999);
@@ -53,10 +57,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.link-panels {
-  padding-top: 0.2rem;
-}
 .links {
+  position: relative;
+  padding-top: 0.2rem;
   background-color: #fff;
   width: 60%;
   margin-left: auto;
@@ -64,10 +67,10 @@ export default {
   border-radius: 0.25rem;
   display: flex;
   justify-content: space-between;
-  height: 50px;
+  height: auto;
   align-items: center;
   margin-bottom: 1rem;
-  padding: 1.8rem 0rem;
+  padding: 1rem 0rem;
 
   .copySide {
     display: flex;
@@ -84,6 +87,55 @@ export default {
   }
   .shortLink {
     color: hsl(180, 66%, 49%);
+  }
+}
+span {
+  position: absolute;
+  top: 0px;
+  left: 5px;
+  color: gray;
+  cursor: pointer;
+}
+hr {
+  display: none;
+  opacity: 0.3;
+}
+
+@media only screen and (max-width: 1220px) {
+  .links {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .links {
+    padding: 1rem;
+    display: grid;
+    grid-auto-columns: 1fr;
+    width: 80%;
+    .longLink {
+      padding-left: 0rem;
+    }
+    .copySide {
+      display: grid;
+      grid-auto-columns: 1fr;
+      gap: 0.5rem;
+    }
+  }
+  hr {
+    display: block;
+    opacity: 0.3;
+    margin: 0.3rem 0rem;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .links {
+    width: 90%;
+
+    p {
+      font-size: 0.8rem;
+    }
   }
 }
 </style>

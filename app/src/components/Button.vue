@@ -30,4 +30,10 @@ button {
   font-size: 0.8rem;
   color: #fff;
 }
+
+@media only screen and (max-width: 1000px) {
+  button {
+    margin: 0;
+  }
+}
 </style>

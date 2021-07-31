@@ -74,23 +74,22 @@ export default {
   width: 60%;
   margin-left: auto;
   margin-right: auto;
+
   background-image: url("../assets/images/bg-shorten-desktop.svg");
   background-repeat: no-repeat;
   background-size: cover;
   background-color: hsl(257, 27%, 26%);
-  height: 150px;
+
+  height: auto;
   border-radius: 0.5rem;
 }
 .input-text {
   width: 75%;
-  margin-left: auto;
-  margin-right: auto;
   margin-left: 2rem;
 }
 input {
   height: 50px;
   width: 100%;
-  margin-right: 1rem;
   border-radius: 0.5rem;
   border: none;
   padding-left: 2rem;
@@ -101,11 +100,11 @@ input {
 }
 button {
   background-color: hsl(180, 66%, 49%);
-  margin-right: 2rem;
   padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  margin-right: 2rem;
   width: 9rem;
   height: 3rem;
-  border-radius: 0.5rem;
   border: none;
   color: #fff;
   font-weight: 700;
@@ -120,10 +119,12 @@ button {
   }
 }
 .container {
-  padding-top: 2.7rem;
   text-align: center;
   display: flex;
   gap: 0.5rem;
+  padding: 2rem 0rem;
+  justify-content: center;
+  align-items: center;
 }
 
 .error {
@@ -137,6 +138,40 @@ button {
   &::placeholder {
     color: hsl(0, 87%, 67%);
     opacity: 0.6;
+  }
+}
+@media only screen and (max-width: 1220px) {
+  .shorten-panel {
+    width: 70%;
+    height: auto;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .shorten-panel {
+    width: 80%;
+  }
+  .container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0rem;
+    padding-top: 1.5rem;
+  }
+  button {
+    margin-right: 0rem;
+    width: 85%;
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+  }
+  .input-text {
+    width: 85%;
+    margin-left: 0rem;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .shorten-panel {
+    width: 90%;
   }
 }
 </style>
