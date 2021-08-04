@@ -35,7 +35,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: https://github.com/Janssenhidal/Shortify_URL/tree/main/app
+- Solution URL: https://www.frontendmentor.io/solutions/vue-js-axios-scss-baz54Pksl
 - Live Site URL: https://shortifyurl.netlify.app/
 
 
