@@ -1,24 +1,49 @@
-# app
+# Frontend Mentor - Shortly URL shortening API Challenge solution
 
-## Project setup
-```
-npm install
-```
+This is a solution to the [Shortly URL shortening API Challenge challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/url-shortening-api-landing-page-2ce3ob-G). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Table of contents
 
-### Compiles and minifies for production
-```
-npm run build
-```
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
 
-### Lints and fixes files
-```
-npm run lint
-```
+## Overview
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### The challenge
+
+Users should be able to:
+
+- View the optimal layout for the site depending on their device's screen size
+- Shorten any valid URL
+- See a list of their shortened links, even after refreshing the browser
+- Copy the shortened link to their clipboard in a single click
+- Receive an error message when the `form` is submitted if:
+  - The `input` field is empty
+
+### Screenshot
+
+## Desktop
+![](./src/assets/images/desktop.png)
+
+## Mobile
+![](./src/assets/images/mobile.png)
+
+
+### Links
+
+- Solution URL: https://github.com/Janssenhidal/Shortify_URL/tree/main/app
+- Live Site URL: https://shortifyurl.netlify.app/
+
+
+### Built with
+
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- CSS Grid
+- VueJS
+- Axios

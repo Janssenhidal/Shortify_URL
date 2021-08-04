@@ -10,6 +10,7 @@
           placeholder="Shorten a link here..."
           @keypress.enter="shorten"
         />
+        <p v-show="error" ref="error" class="error">Please add a link</p>
       </div>
 
       <button type="submit" v-on:click="shorten">
@@ -22,7 +23,6 @@
         />
       </button>
     </div>
-    <p v-show="error" ref="error" class="error">Please add a link</p>
   </div>
 </template>
 
@@ -99,6 +99,9 @@ input {
   }
 }
 button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: hsl(180, 66%, 49%);
   border-radius: 0.5rem;
   width: 9rem;
@@ -117,14 +120,14 @@ button {
   }
 }
 .container {
-  text-align: center;
   display: flex;
+  text-align: center;
+  justify-content: center;
   gap: 0.5rem;
 }
 
 .error {
   position: absolute;
-  top: 100px;
   color: hsl(0, 87%, 67%);
   font-style: italic;
   font-size: 0.8rem;
@@ -142,10 +145,6 @@ button {
   }
 }
 @media only screen and (max-width: 1000px) {
-  .error {
-    top: 90px;
-    left: 45px;
-  }
   .shorten-panel {
     width: 80%;
   }
@@ -153,9 +152,10 @@ button {
     display: flex;
     align-items: center;
     flex-direction: column;
+    gap: 2rem;
   }
   button {
-    width: 25%;
+    width: 200px;
   }
   .input-text {
     width: 100%;
@@ -165,6 +165,13 @@ button {
 @media only screen and (max-width: 450px) {
   .shorten-panel {
     width: 90%;
+  }
+  input {
+    padding-left: 1rem;
+    font-size: 0.8rem;
+  }
+  .error {
+    font-size: 0.7rem;
   }
 }
 </style>

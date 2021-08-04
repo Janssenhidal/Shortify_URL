@@ -95,6 +95,7 @@ span {
   left: 5px;
   color: gray;
   cursor: pointer;
+  font-size: 0.9rem;
 }
 hr {
   display: none;
