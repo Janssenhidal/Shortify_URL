@@ -120,15 +120,19 @@ footer {
   }
 }
 .socials {
-  text-align: right;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  .social {
-    cursor: pointer;
-    fill: #fff;
-    &:hover {
-      fill: hsl(180, 66%, 49%);
-    }
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: top;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.social {
+  cursor: pointer;
+  fill: #fff;
+  &:hover {
+    fill: hsl(180, 66%, 49%);
   }
 }
 
