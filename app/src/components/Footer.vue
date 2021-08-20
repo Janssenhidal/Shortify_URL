@@ -119,17 +119,18 @@ footer {
     }
   }
 }
-.socials {
-  text-align: right;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  .social {
-    cursor: pointer;
-    fill: #fff;
-    &:hover {
-      fill: hsl(180, 66%, 49%);
-    }
+.social {
+  cursor: pointer;
+  fill: #fff;
+  padding-left: 1rem;
+  display: inline;
+  &:hover {
+    fill: hsl(180, 66%, 49%);
   }
+}
+
+.socials {
+  text-align: center;
 }
 
 @media only screen and (max-width: 925px) {
