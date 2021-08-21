@@ -134,10 +134,6 @@ footer {
   }
 }
 
-.socials {
-  text-align: center;
-}
-
 @media only screen and (max-width: 925px) {
   .footer-grid {
     display: grid;
